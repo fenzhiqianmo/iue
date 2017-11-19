@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "zue",
+        "scope": null,
+        "escapedName": "zue",
+        "name": "zue",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/feng/zun-dev"
+    ]
+  ],
+  "_from": "zue@latest",
+  "_id": "zue@0.0.1",
+  "_inCache": true,
+  "_location": "/zue",
+  "_nodeVersion": "7.5.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/zue-0.0.1.tgz_1511061458720_0.004788702819496393"
+  },
+  "_npmUser": {
+    "name": "fenzhiqianmo",
+    "email": "fenzhiqianmo@vip.qq.com"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "zue",
+    "scope": null,
+    "escapedName": "zue",
+    "name": "zue",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/zue/-/zue-0.0.1.tgz",
+  "_shasum": "c9d370987ce95d4a58596c51fa61ff63ff375ac9",
+  "_shrinkwrap": null,
+  "_spec": "zue",
+  "_where": "/feng/zun-dev",
+  "author": {
+    "name": "tangxiaoxiong"
+  },
+  "bugs": {
+    "url": "https://github.com/fenzhiqianmo/zue/issues"
+  },
+  "dependencies": {},
+  "description": "my program like vue.js",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "c9d370987ce95d4a58596c51fa61ff63ff375ac9",
+    "tarball": "https://registry.npmjs.org/zue/-/zue-0.0.1.tgz"
+  },
+  "gitHead": "8e5bc39b7e5f727e5d9773a94bcbc66cc5e31d74",
+  "homepage": "https://github.com/fenzhiqianmo/zue#readme",
+  "keywords": [
+    "zue"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "fenzhiqianmo",
+      "email": "fenzhiqianmo@vip.qq.com"
+    }
+  ],
+  "name": "zue",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenzhiqianmo/zue.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}

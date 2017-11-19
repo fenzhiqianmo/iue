@@ -2,11 +2,11 @@ const path = require('path');
 
 const config = {
     entry: {
-        main: './src/index'
+        main: './zue/src/index.js'
     },
     output: {
         libraryTarget: "umd",
-        path: path.join(__dirname, './lib'),
+        path: path.join(__dirname, '../zue/lib'),
         filename: 'zue.js'
     },
     module: {

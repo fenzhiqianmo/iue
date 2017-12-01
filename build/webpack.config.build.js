@@ -2,18 +2,18 @@ const path = require('path');
 
 const config = {
     entry: {
-        main: './zue/src/index.js'
+        main: './iue/src/index.js'
     },
     output: {
         libraryTarget: "umd",
-        path: path.join(__dirname, '../zue/lib'),
-        filename: 'zue.js'
+        path: path.join(__dirname, '../iue/lib'),
+        filename: 'iue.js'
     },
     module: {
         rules: [
             {
-                test: /\.vue$/,
-                loader: 'vue-loader'
+                test: /\.iue$/,
+                loader: 'iue-loader'
             },
             {
                 test: /\.js$/,

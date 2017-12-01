@@ -1,5 +1,4 @@
-import Iue from '../iue/src/index';
-
+import Iue from 'iue';
 
 var child = Iue.extend({
     template: '#child-template',

@@ -1,5 +1,4 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
     entry: {
@@ -8,7 +7,7 @@ const config = {
     output: {
         path: path.join(__dirname, '/dist'),
         publicPath: '/dist/',
-        filename: 'zue.js'
+        filename: 'iue.js'
     },
     devServer: {
       contentBase: path.join(__dirname, "../demo/"),
@@ -18,28 +17,24 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.vue$/,
-                loader: 'vue-loader',
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                enforce: "pre",
+                exclude: /node_modules/,
+                include: /iue/,
                 options: {
-                    loaders: {
-                        css: ExtractTextPlugin.extract({
-                            use: 'css-loader?minimize',
-                            fallback: 'vue-style-loader'
-                        })
-                    }
+                    formatter: require('eslint-friendly-formatter')
                 }
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                include: /iue/,
                 exclude: /node_modules/
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: 'css-loader',
-                    fallback: 'style-loader'
-                })
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
@@ -47,9 +42,7 @@ const config = {
             }
         ]
     },
-    plugins: [
-        new ExtractTextPlugin('main.css')
-    ]
+    plugins: []
 };
 
 module.exports = config;

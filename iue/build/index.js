@@ -1,4 +1,3 @@
-/*       */
 import _ from './util';
 import installGlobalAPI from './init/api/global';
 import init from './init';

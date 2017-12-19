@@ -1,6 +1,3 @@
-/**
- * 定义一个对象,它的属性中有push等经过改写的数组方法
- */
 const arrMethods = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
 const arrayFn = [];
 

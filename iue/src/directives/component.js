@@ -15,9 +15,6 @@ module.exports = {
 
     },
 
-    /**
-     * @param value {String} 组件标签名, 如 "my-component"
-     */
     setComponent: function (value) {
         if (value) {
             this.Component = this.vm.$options.components[value];
@@ -26,18 +23,11 @@ module.exports = {
         }
     },
 
-    /**
-     * 构建、挂载组件实例
-     */
     mountComponent: function () {
         let newComponent = this.build();
         newComponent.$before(this.anchor);
     },
 
-    /**
-     * 构建组件实例
-     * @returns {iueComponent}
-     */
     build: function () {
         if (this.Component) {
             let options = {

@@ -1,10 +1,5 @@
 import _ from '../util';
 
-/**
- * 初始化节点
- * @param el {string} selector
- * @private
- */
 exports._initElement = function (el) {
     let _el = el;
     if (typeof el === 'string') {

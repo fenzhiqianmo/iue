@@ -1,4 +1,3 @@
-/* @flow */
 import Batcher from './batcher';
 import expParser from '../compile/parse/expression';
 import Observer from '../observer/observer';
@@ -17,7 +16,7 @@ let batcher = new Batcher();
  * @param ctx {Object} 回调函数执行上下文
  * @constructor
  */
-function Watcher(vm: Object, expression: String, cb: Function, ctx: Object) {
+function Watcher(vm, expression, cb, ctx) {
     this.id = ++uid;
     this.vm = vm;
     this.expression = expression;

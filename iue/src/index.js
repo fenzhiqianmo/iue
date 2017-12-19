@@ -1,4 +1,3 @@
-/* @flow */
 import _ from './util';
 import installGlobalAPI from './init/api/global';
 import init from './init';
@@ -8,7 +7,7 @@ import dom from './dom';
 import event from './event';
 import directives from './directives/directives';
 
-function Iue(options: Object) {
+function Iue(options) {
     this._init(options);
 }
 

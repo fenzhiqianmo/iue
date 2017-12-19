@@ -1,4 +1,7 @@
-/* @flow */
+/**
+ * 批处理构造函数
+ * @constructor
+ */
 function Batcher() {
     this.reset();
 }

@@ -1,4 +1,4 @@
-import _ from '../../util';
+import _ from '@/util';
 
 const handlers = {
     text: require('./text')

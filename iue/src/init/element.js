@@ -1,6 +1,11 @@
-import _ from '../util';
+import _ from '@/util';
 
-exports._initElement = function (el) {
+/**
+ * 初始化节点
+ * @param el {string} selector
+ * @private
+ */
+exports.initElement = function (el) {
     let _el = el;
     if (typeof el === 'string') {
         let selector = el;

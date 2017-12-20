@@ -1,4 +1,4 @@
-import Iue from '../iue/build/index';
+import Iue from '../iue/src/index';
 
 
 var child = Iue.extend({

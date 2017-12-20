@@ -1,6 +1,8 @@
 const path = require('path');
+var merge = require('webpack-merge');
+var baseWebpackConfig = require('./webpack.base.js');
 
-const config = {
+module.exports = merge(baseWebpackConfig, {
     entry: {
         main: './demo/dev'
     },
@@ -13,36 +15,5 @@ const config = {
       contentBase: path.join(__dirname, "../demo/"),
       compress: true,
       port: 9000
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                loader: 'eslint-loader',
-                enforce: "pre",
-                exclude: /node_modules/,
-                include: /iue/,
-                options: {
-                    formatter: require('eslint-friendly-formatter')
-                }
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                include: /iue/,
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=1024'
-            }
-        ]
-    },
-    plugins: []
-};
-
-module.exports = config;
+    }
+});

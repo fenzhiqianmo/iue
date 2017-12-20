@@ -1,5 +1,11 @@
+/**
+ * 解析、渲染DOM
+ * @param el {string} selector
+ */
 exports.$mount = function (el) {
-    this._initElement(el);
+    // 合法性判断等, 有待补充
+    this.initElement(el);
+    // 解析、渲染DOM
     this._compile();
 };
 

@@ -4,9 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "npm run flow && webpack-dev-server --host 127.0.0.1 --port 8080 --open --config build/webpack.dev.js",
-    "build": "npm run clear:flow && npm run gulp:copy && ./node_modules/.bin/webpack -p --progress --hide-modules --config build/webpack.build.js",
-    "dist": "npm run clear:flow && npm run gulp:copy && ./node_modules/.bin/webpack -p --progress --hide-modules --config build/webpack.dist.js",
+    "dev": "webpack-dev-server --host 127.0.0.1 --port 8080 --open --config build/webpack.dev.js",
+    "build": "npm run gulp:copy && webpack -p --progress --hide-modules --config build/webpack.build.js",
+    "dist": "npm run build && webpack -p --progress --hide-modules --config build/webpack.dist.js",
     "gulp:copy": "gulp --gulpfile build/gulpfile.js",
     "flow": "flow",
     "clear:flow": "flow-remove-types iue/src/ --out-dir iue/build/"

@@ -1,31 +1,29 @@
-/* @flow */
-import _ from './util';
-import installGlobalAPI from './init/api/global';
-import init from './init';
-import compile from './compile';
-import bindings from './bindings';
-import dom from './dom';
-import event from './event';
-import directives from './directives/directives';
+import { extend } from '@/util';
 
-function Iue(options: Object) {
-    this._init(options);
+class Iue{
+		constructor(options) {
+			this.init(options);
+		}
 }
 
 Iue.prototype = {
     constructor: Iue,
-    ...init,
-    ...compile,
-    ...bindings,
-    ...dom,
-    ...event
+    ...
+    (() => {
+			let o = {};
+			(function r(s) {
+				extend(o, s);
+				return r;
+			})(require('./init'))(require('./compile'))(require('./bindings'))(require('./dom'))(require('./event'))
+			return o;
+		})()
 };
 
 Iue.options = {
-    directives: {...directives},
+    directives: {...require('@/directives/directives')},
     components: {}
 };
 
-installGlobalAPI(Iue);
+require('@/init/api/global')(Iue);
 
-module.exports = window.Iue = _.Iue = Iue;
+module.exports = window.Iue = Iue;

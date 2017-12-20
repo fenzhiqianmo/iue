@@ -1,8 +1,10 @@
 const path = require('path');
+var merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var baseWebpackConfig = require('./webpack.base.js');
 
-const config = {
+module.exports = merge(baseWebpackConfig, {
     entry: {
         main: './demo/dist.js'
     },
@@ -10,27 +12,6 @@ const config = {
         path: path.join(__dirname, '../dist'),
         publicPath: './',
         filename: 'main.[hash:7].js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.iue$/,
-                loader: 'iue-loader'
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader',
-            },
-            {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=1024'
-            }
-        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -50,6 +31,4 @@ const config = {
             }
         )
     ]
-};
-
-module.exports = config;
+});

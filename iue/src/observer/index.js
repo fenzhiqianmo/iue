@@ -13,8 +13,6 @@ Observer.emitGet = true;
 
 /**
  * 根据不同的数据类型,调用observer构造函数
- * @param value {Any} 数据
- * @returns {Observer}
  */
 Observer.create = function (val) {
     if (Array.isArray(val)) {
@@ -26,14 +24,10 @@ Observer.create = function (val) {
 
 /**
  * 观察者构造函数
- * @param value {Object} 数据对象
- * @param type {Int} 数据对象的类型(分为对象和数组)
- * @constructor
  */
 function Observer(obj, type) {
     this.obj = obj;
     this.id = ++uid;
-    // TODO 这里enumerable一定要为false,否则会触发死循环, 原因未明
     // 将当前对象存储到当前对象的$observer属性中
     Object.defineProperty(obj, '$observer', {
         value: this,
@@ -42,17 +36,16 @@ function Observer(obj, type) {
         configurable: true
     });
     if (type === ARRAY) {
-        obj.__proto__ = arrayFn;  // eslint-disable-line
+        obj.__proto__ = arrayFn;
         this.link(obj);
     } else if (type === OBJECT) {
-        obj.__proto__ = objectFn;  // eslint-disable-line
+        obj.__proto__ = objectFn;
         this.walk(obj);
     }
 }
 
 /**
  * 遍历数据对象
- * @param obj {Object} 待遍历的数据对象
  */
 Observer.prototype.walk = function (obj) {
     for (let key in obj) {
@@ -67,7 +60,6 @@ Observer.prototype.walk = function (obj) {
  * 这个方法是用来处理如下情况: var ary = [1,{name:liangshaofeng}]
  * 也就是说,当数组的某些项是一个对象的时候,
  * 那么需要给这个对象创建observer监听它
- * @param items {Array} 待处理数组
  */
 Observer.prototype.link = function (items) {
     items.forEach((val, index) => {
@@ -77,10 +69,6 @@ Observer.prototype.link = function (items) {
 
 /**
  * 调用创建observer函数
- * 并且判断是否有父节点,如果有,则存储父节点到自身,
- * 目的是为了方便后面事件传播使用
- * @param key {string} 键值
- * @param val {Any} 属性值
  */
 Observer.prototype.observe = function (key, val) {
     let ob = Observer.create(val);
@@ -93,8 +81,6 @@ Observer.prototype.observe = function (key, val) {
 
 /**
  * 定义对象属性
- * @param key {string} 属性键名
- * @param val {Any} 属性值
  */
 Observer.prototype.convert = function (key, val) {
     let ob = this;
@@ -118,9 +104,6 @@ Observer.prototype.convert = function (key, val) {
 
 /**
  * 订阅事件
- * @param event {string} 事件类型
- * @param fn {Function} 对调函数
- * @returns {Observer} 观察者对象
  */
 Observer.prototype.on = function (event, fn) {
     this._cbs = this._cbs || {};
@@ -135,9 +118,6 @@ Observer.prototype.on = function (event, fn) {
 
 /**
  * 取消订阅事件
- * @param event {string} 事件类型
- * @param fn {Function} 回调函数
- * @returns {Observer} 观察者对象
  */
 Observer.prototype.off = function (event, fn) {
     this._cbs = this._cbs || {};
@@ -186,8 +166,6 @@ Observer.prototype.notify = function (event, path, val) {
 
 /**
  * 触发执行回调函数
- * @param event {string} 事件类型
- * @param event {path} 事件触发路径
  *
  */
 Observer.prototype.emit = function (event, path, val) {

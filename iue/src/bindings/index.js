@@ -7,7 +7,6 @@ import Binding from './Binding';
  * 然后再更新本实例所有子实例的相关binding
  * 它会去把对应改变了的数据那里找出所有的watcher, 然后一一执行他们的cb
  * 一个都不放过
- * @private
  */
 exports._updateBindingAt = function () {
     this._updateSelfBindingAt(...arguments);
@@ -16,9 +15,6 @@ exports._updateBindingAt = function () {
 
 /**
  * 执行本实例发生了数据变动的watcher
- * @param event {String} 事件类型
- * @param path {String} 事件路径
- * @private
  */
 exports._updateSelfBindingAt = function (event, path) {
     let pathAry = path.split('.');
@@ -37,7 +33,6 @@ exports._updateSelfBindingAt = function (event, path) {
 
 /**
  * 执行本实例所有子实例发生了数据变动的watcher
- * @private
  */
 exports._updateChildrenBindingAt = function () {
     if (!this.$children.length) return;
@@ -49,7 +44,6 @@ exports._updateChildrenBindingAt = function () {
 
 /**
  * 就是在这里定于数据对象的变化的
- * @private
  */
 exports.initBindings = function () {
     this._rootBinding = new Binding();
@@ -60,9 +54,6 @@ exports.initBindings = function () {
 /**
  * 根据给出的路径获取binding
  * 如果有,则返回该binding;如果没有,则返回false
- * @param path {String} 例如: "user.name"
- * @returns {boolean|Binding}
- * @private
  */
 exports._getBindingAt = function (path) {
     let b = this._rootBinding;
@@ -77,9 +68,6 @@ exports._getBindingAt = function (path) {
 
 /**
  * 根据给出的路径创建binding
- * @param path {String} 例如: "user.name"
- * @returns {Binding}
- * @private
  */
 exports._createBindingAt = function (path) {
     let b = this._rootBinding;
@@ -98,8 +86,6 @@ exports._createBindingAt = function (path) {
  * 因为在实现computed计算属性功能的过程中,
  * 发现程序需要知晓计算出来的属性到底依赖于哪些原先就有的属性
  * 这样才能做到在对应原有的属性的_subs数组中添加新属性指令的watcher事件
- * @param path {String} get事件传播到顶层时的路径,比如"user.name"
- * @private
  */
 exports._collectDep = function (event, path) {
     let watcher = this._activeWatcher;

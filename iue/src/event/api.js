@@ -1,8 +1,5 @@
 /**
- * 注册事件及其回调函数到实例上
- * @param event {String} 事件名称
- * @param fn {Function} 事件对应的回调函数
- * @returns {iue} 实例本身
+ * 注册事件
  */
 exports.$on = function (event, fn) {
     (this._events[event] || (this._events[event] = [])).push(fn);
@@ -11,9 +8,6 @@ exports.$on = function (event, fn) {
 
 /**
  * 在当前实例中触发指定的事件, 执行对应的回调函数
- * @param event {String} 事件名称
- * @param val {*} 事件所携带的参数
- * @returns {boolean} true代表事件可以继续传播, false代表事件不可继续传播
  */
 exports.$emit = function (event, val) {
     let cbs = this._events[event];
@@ -36,9 +30,6 @@ exports.$emit = function (event, val) {
 
 /**
  * 向上冒泡事件, 沿父链传播
- * @param event {String} 事件的名称
- * @param val {*} 事件所携带的参数
- * @returns {iue} 实例
  */
 exports.$dispatch = function (event, val) {
     // 在当前实例中触发该事件
@@ -55,9 +46,6 @@ exports.$dispatch = function (event, val) {
 
 /**
  * 向下广播事件, 沿子链传播
- * @param event {String} 事件的名称
- * @param val {*} 事件所携带的参数
- * @returns {iue} 实例
  */
 exports.$broadcast = function (event, val) {
     let children = this.$children;

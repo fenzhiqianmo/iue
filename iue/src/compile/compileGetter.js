@@ -23,5 +23,5 @@ exports.compileGetter = function (path) {
     key = _path[_path.length - 1];
     pathString += `.${key}`;
     boby += `) return ${pathString}`;
-    return new Function('o', boby);   // eslint-disable-line
+    return new Function('o', boby);
 };

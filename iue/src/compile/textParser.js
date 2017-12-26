@@ -2,9 +2,8 @@ const tagRE = /\{?\{\{(.+?)\}\}\}?/g;
 
 /**
  * 将文本节点如"{{user.name}}1111",解析成["user.name","1111"]两个节点
- * @param text {String} 例如 "{{user.name}}1111"
  */
-exports.parse = function (text) {
+exports.textParser = function (text) {
     if (text.trim() === '' || !tagRE.test(text)) return null;
     let tokens = [],
         match, index, value, lastIndex = 0;

@@ -1,5 +1,5 @@
 import Batcher from './batcher';
-import expParser from '@/compile/parse/expression';
+import { compileGetter } from '@/compile/compileGetter.js';
 import Observer from '@/observer';
 
 let uid = 0;
@@ -10,11 +10,6 @@ let batcher = new Batcher();
  * 有什么用呢这个东西?两个用途
  * 1. 当指令对应的数据发生改变的时候, 执行更新DOM的update函数
  * 2. 当$watch API对应的数据发生改变的时候, 执行你自己定义的回调函数
- * @param vm {iue} iue实例
- * @param expression {String} 表达式, 例如: "user.name"
- * @param cb {Function} 当对应的数据更新的时候执行的回调函数
- * @param ctx {Object} 回调函数执行上下文
- * @constructor
  */
 function Watcher(vm, expression, cb, ctx) {
     this.id = ++uid;
@@ -23,7 +18,7 @@ function Watcher(vm, expression, cb, ctx) {
     this.cb = cb;
     this.ctx = ctx || vm;
     this.deps = Object.create(null);
-    this.getter = expParser.compileGetter(expression);
+    this.getter = compileGetter(expression);
     this.initDeps(expression);
 }
 
@@ -40,7 +35,6 @@ Watcher.prototype.initDeps = function (path) {
  * 大概是: 根据给出的路径, 去获取Binding对象。
  * 如果该Binding对象不存在,则创建它。
  * 然后把当前的watcher对象添加到binding对象上
- * @param path {string} 指令表达式对应的路径, 例如"user.name"
  */
 Watcher.prototype.addDep = function (path) {
     let vm = this.vm;

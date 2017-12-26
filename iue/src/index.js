@@ -1,5 +1,11 @@
 import { extend } from '@/util';
-
+import init from './init';
+import compile from './compile';
+import bindings from './bindings';
+import dom from './dom';
+import event from './event';
+import global from '@/global';
+import directives from '@/directives/directives';
 class Iue{
 		constructor(options) {
 			this.init(options);
@@ -9,21 +15,18 @@ class Iue{
 Iue.prototype = {
     constructor: Iue,
     ...
-    (() => {
-			let o = {};
-			(function r(s) {
-				extend(o, s);
-				return r;
-			})(require('./init'))(require('./compile'))(require('./bindings'))(require('./dom'))(require('./event'))
-			return o;
-		})()
+    (function (ex, obj) {
+			(function r(module) {ex(obj, module); return r})
+			(init)(compile)(bindings)(dom)(event);
+			return obj;
+		})(extend, {})
 };
 
 Iue.options = {
-    directives: {...require('@/directives/directives')},
+    directives,
     components: {}
 };
 
-require('@/init/api/global')(Iue);
+global(Iue);
 
 module.exports = window.Iue = Iue;

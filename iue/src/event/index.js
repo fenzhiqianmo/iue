@@ -1,10 +1,9 @@
-import api from './api';
+import api from './api.js';
 import _ from '@/util';
 
 _.extend(exports, api);
 /**
  * 初始化事件events
- * @private
  */
 exports.initEvents = function () {
     let options = this.$options;
@@ -14,9 +13,6 @@ exports.initEvents = function () {
 
 /**
  * 遍历实例的所有事件
- * @param vm {iue} iue实例
- * @param action {String} 动作类型,此处为'$on',代表绑定事件
- * @param events {Object} 事件对象,可能包含多个事件, 所以需要遍历
  */
 function registerCallbacks(vm, action, events) {
     if (!events) return;
@@ -28,10 +24,6 @@ function registerCallbacks(vm, action, events) {
 
 /**
  * 注册单个事件
- * @param vm {iue} iue实例
- * @param action {String} 动作类型,此处为'$on',代表绑定事件
- * @param key {String} 事件名称, 比如: 'parent-name',代表从父组件那里传递了名称过来
- * @param event {Function} 触发key事件的时候, 对应的回调函数
  */
 function register(vm, action, key, event) {
     if (typeof event !== 'function') return;
